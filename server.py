@@ -1,5 +1,16 @@
 import socket
 import json
+import ast
+
+def publish():
+    return
+
+
+def subscribe(message):
+    if message is None:
+            while True:
+                socketconnect.c.send(message)
+    return
 
 
 def socketconnect():
@@ -11,10 +22,14 @@ def socketconnect():
     while True:
         c, addr = s.accept()
         message = c.recv(1024)
-        decode = json.loads(message)
-        if message is None:
-            while True:
-                c.send(message)
+        decode = json.dumps(message)
+        splitline = decode.rsplit(',')
+        fnd_req_type = splitline[1]
+        req_type = fnd_req_type[2]
+        if req_type is 'p':
+            publish(decode)
+        else:
+            subscribe()
     return
 
 
