@@ -2,15 +2,23 @@ import socket
 import json
 import ast
 
-def publish():
+
+def hold_message(msg):
+    channel = msg.keys()
+    message = msg.values()
     return
 
 
-def subscribe(message):
-    if message is None:
-            while True:
-                socketconnect.c.send(message)
-    return
+def publish(decode):
+    lst = list(decode)
+    hold_message(lst[0])
+    return 'msg from p'
+
+
+def subscribe(channel):
+    if channel is hold_message.hld_msg.has_key(channel):
+        message = channel.values()
+    return message
 
 
 def socketconnect():
@@ -29,7 +37,8 @@ def socketconnect():
         if req_type is 'p':
             publish(decode)
         else:
-            subscribe()
+            subscribe(message)
+            c.send(message)
     return
 
 
